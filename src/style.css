@@ -1,0 +1,109 @@
+﻿* { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+body, html { width: 100%; height: 100%; overflow: hidden; background-color: #120B07; font-family: 'Noto Serif Bengali', serif; display: flex; justify-content: center; align-items: center; }
+#app { width: 100vw; max-width: 480px; height: 100vh; max-height: 960px; display: flex; flex-direction: column; position: relative; box-shadow: 0 0 50px rgba(0,0,0,0.85); overflow: hidden; }
+
+/* Cinematic Promo Screen */
+#welcome-screen {
+  position: absolute; inset: 0; z-index: 50;
+  background: radial-gradient(circle at 50% 35%, #2B180E, #0D0603);
+  display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; text-align: center;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+#welcome-screen.hidden { opacity: 0; pointer-events: none; transform: scale(1.08); }
+
+/* Thrown Guti Scatter Stage */
+.guti-scatter-stage {
+  position: relative; width: 280px; height: 130px; margin-bottom: 8px;
+}
+.thrown-guti {
+  position: absolute; width: 54px; height: 54px; border-radius: 50%;
+  display: flex; justify-content: center; align-items: center; font-size: 1.8rem;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.7), inset 0 2px 4px rgba(255,255,255,0.4);
+}
+.thrown-tiger {
+  background: radial-gradient(circle at 35% 30%, #D95E3C, #5C2214);
+  border: 2px solid #C19A58;
+}
+.thrown-goat {
+  background: radial-gradient(circle at 35% 30%, #F5DEB3, #7A6242);
+  border: 2px solid #566548;
+}
+
+/* Dynamic Toss Trajectories from Left & Right */
+.toss-1 { top: 38px; left: 18px; animation: tossLeft1 0.85s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards; }
+.toss-2 { top: 12px; left: 85px; animation: tossRight1 0.9s cubic-bezier(0.18, 0.89, 0.32, 1.28) 0.08s backwards; }
+.toss-3 { top: 46px; left: 142px; animation: tossLeft2 0.95s cubic-bezier(0.18, 0.89, 0.32, 1.28) 0.14s backwards; }
+.toss-4 { top: 16px; left: 205px; animation: tossRight2 0.88s cubic-bezier(0.18, 0.89, 0.32, 1.28) 0.2s backwards; }
+.toss-5 { top: 68px; left: 75px; animation: tossLeft1 0.92s cubic-bezier(0.18, 0.89, 0.32, 1.28) 0.26s backwards; }
+.toss-6 { top: 65px; left: 175px; animation: tossRight1 0.96s cubic-bezier(0.18, 0.89, 0.32, 1.28) 0.32s backwards; }
+
+@keyframes tossLeft1 { 0% { transform: translate(-220px, -60px) rotate(-140deg) scale(0.6); opacity: 0; } 100% { transform: translate(0, 0) rotate(-12deg) scale(1); opacity: 1; } }
+@keyframes tossRight1 { 0% { transform: translate(220px, -70px) rotate(160deg) scale(0.6); opacity: 0; } 100% { transform: translate(0, 0) rotate(18deg) scale(1.05); opacity: 1; } }
+@keyframes tossLeft2 { 0% { transform: translate(-240px, -40px) rotate(-180deg) scale(0.6); opacity: 0; } 100% { transform: translate(0, 0) rotate(-24deg) scale(0.95); opacity: 1; } }
+@keyframes tossRight2 { 0% { transform: translate(240px, -50px) rotate(130deg) scale(0.6); opacity: 0; } 100% { transform: translate(0, 0) rotate(14deg) scale(1); opacity: 1; } }
+
+.welcome-title {
+  font-family: 'Galada', cursive; font-size: 2.7rem; color: #F5E8D0;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.9), 0 0 25px rgba(217,94,60,0.35);
+  letter-spacing: 1px; line-height: 1.15; margin-top: 6px;
+}
+.welcome-tagline {
+  margin-top: 4px; font-size: 1rem; color: #C19A58; font-weight: 700;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+}
+.welcome-lore {
+  font-size: 0.8rem; color: #BFA588; margin-top: 10px; max-width: 310px; line-height: 1.4;
+}
+
+/* Earthen Clay & Brass Battle Button (No More Glaring Neon) */
+.btn-start {
+  margin-top: 26px; padding: 13px 38px; font-size: 1.15rem; font-weight: 800;
+  font-family: 'Noto Serif Bengali', serif;
+  background: linear-gradient(180deg, #8E3822 0%, #541D10 100%);
+  color: #F7EAD0; border: 2px solid #C19A58; border-radius: 28px; cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.7), inset 0 1px 3px rgba(255,230,180,0.35);
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+.btn-start:hover { filter: brightness(1.1); transform: scale(1.03); }
+.btn-start:active { transform: scale(0.97); }
+
+/* Themed Bottom Navigation Dock (Carved Wood & Clay Tablets) */
+.bottom-dock {
+  display: flex; justify-content: space-between; width: 100%;
+  padding: 8px 14px 14px 14px;
+  background: linear-gradient(180deg, rgba(28, 17, 11, 0.85), rgba(16, 9, 5, 0.95));
+  border-top: 1.5px solid rgba(193, 154, 88, 0.25);
+  backdrop-filter: blur(8px); gap: 8px;
+}
+
+.dock-btn {
+  flex: 1; padding: 10px 4px; font-size: 0.84rem; font-weight: 700;
+  border-radius: 10px; cursor: pointer;
+  display: flex; justify-content: center; align-items: center; gap: 4px;
+  font-family: 'Noto Serif Bengali', serif;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5), inset 0 1px 2px rgba(255,255,255,0.2), inset 0 -2px 4px rgba(0,0,0,0.45);
+  transition: transform 0.1s ease, filter 0.15s ease;
+}
+.dock-btn:active { transform: translateY(2px); box-shadow: 0 1px 4px rgba(0,0,0,0.6); }
+
+/* Individual Tablet Skins */
+.dock-btn-classic {
+  background: linear-gradient(180deg, #7A3320 0%, #4D1A0D 100%);
+  color: #F7E8D3; border: 1.5px solid #A84E34;
+}
+.dock-btn-campaign {
+  background: linear-gradient(180deg, #485A3B 0%, #293620 100%);
+  color: #E2ECD8; border: 1.5px solid #667D55;
+}
+.dock-btn-restart {
+  background: linear-gradient(180deg, #8C6F3E 0%, #544122 100%);
+  color: #FFF2D6; border: 1.5px solid #B5955D;
+}
+
+/* Live HUD & In-game */
+h1 { font-family: 'Galada', cursive; letter-spacing: 0.5px; }
+.hud-panel { display: flex; justify-content: space-between; width: 100%; font-size: 0.95rem; font-weight: 700; color: #2B180D; }
+.hud-badge { background: rgba(255, 255, 255, 0.45); border: 1.5px solid rgba(73, 53, 43, 0.35); padding: 5px 12px; border-radius: 8px; backdrop-filter: blur(4px); }
+.board-container { flex: 1; display: flex; justify-content: center; align-items: center; padding: 8px; position: relative; }
+canvas { touch-action: none; cursor: pointer; border-radius: 16px; }
+.win-banner { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(20, 10, 5, 0.97); color: #FFF; padding: 24px 30px; border-radius: 18px; text-align: center; box-shadow: 0 16px 45px rgba(0,0,0,0.85); z-index: 20; display: flex; flex-direction: column; gap: 10px; border: 2px solid #C19A58; }

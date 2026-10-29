@@ -1,0 +1,17 @@
+﻿{
+  "name": "বাঘ ও ছাগল — Tiger & Goat",
+  "short_name": "বাঘ ও ছাগল",
+  "description": "এক চালেই বদলে যায় খেলা। Traditional Bengali Strategy Game.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#201D1A",
+  "theme_color": "#A9513B",
+  "icons": [
+    {
+      "src": "/assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
